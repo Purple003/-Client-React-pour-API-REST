@@ -36,11 +36,11 @@ L'application sera accessible sur http://localhost:3000
 ```
 src/
 ├── components/
-│   ├── CompteForm.js    # Formulaire d'ajout de compte
-│   └── CompteList.js    # Liste des comptes
-├── config.js            # Configuration de l'API
-├── App.js               # Composant principal
-└── index.js             # Point d'entrée
+│   ├── CompteForm.js    
+│   └── CompteList.js    
+├── config.js            
+├── App.js               
+└── index.js             
 ```
 
 ## Utilisation
@@ -51,8 +51,6 @@ src/
 
 ## Démonstration
 
-![Capture d'écran de l'application](demo.png)
+https://github.com/user-attachments/assets/a2c012ec-ce7f-457e-8b27-e2aee6b9a764
 
-## Notes
 
-L'application utilise actuellement un état local pour stocker les comptes. Les données sont perdues lors du rechargement de la page.
