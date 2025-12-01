@@ -10,7 +10,7 @@ function CompteForm({ onAjouterCompte }) {
   };
 
   // Gestion de la soumission du formulaire
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); // Empêche le rechargement de la page
 
     // Validation simple
@@ -20,15 +20,17 @@ function CompteForm({ onAjouterCompte }) {
     }
 
     // Ajouter le compte via la fonction passée en props
-    onAjouterCompte({
+    const success = await onAjouterCompte({
       solde: parseFloat(compte.solde),
       dateCreation: compte.dateCreation,
       type: compte.type
     });
 
-    // Réinitialiser le formulaire
-    setCompte({ solde: '', dateCreation: '', type: 'COURANT' });
-    alert('Compte ajouté avec succès !');
+    // Réinitialiser le formulaire seulement si l'ajout a réussi
+    if (success) {
+      setCompte({ solde: '', dateCreation: '', type: 'COURANT' });
+      alert('Compte ajouté avec succès !');
+    }
   };
 
   return (
