@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import CompteList from './components/CompteList';
+import CompteForm from './components/CompteForm';
 
 function App() {
+  const [comptes, setComptes] = useState([
+    { id: 1, solde: 1000, dateCreation: '2024-01-15', type: 'COURANT' },
+    { id: 2, solde: 5000, dateCreation: '2024-02-20', type: 'EPARGNE' }
+  ]);
+
+  const ajouterCompte = (nouveauCompte) => {
+    const compteAvecId = {
+      ...nouveauCompte,
+      id: comptes.length > 0 ? Math.max(...comptes.map(c => c.id)) + 1 : 1
+    };
+    setComptes([...comptes, compteAvecId]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <CompteForm onAjouterCompte={ajouterCompte} />
+      <CompteList comptes={comptes} />
     </div>
   );
 }
